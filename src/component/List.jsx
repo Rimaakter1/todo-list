@@ -145,6 +145,7 @@ const TodoList = () => {
                                                 </span>
                                             </div>
                                             <button
+                                                onClick={() => removeTodo(index)}
                                                 className="text-red-400 hover:text-red-600 transition duration-300 text-3xl"
                                             >
                                                 <RiDeleteBin5Line />
