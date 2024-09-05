@@ -41,6 +41,15 @@ const TodoList = () => {
         setTodos(updatedTodos);
     };
 
+
+    // Mark task as completed/uncompleted
+    const toggleComplete = (index) => {
+        const updatedTodos = todos.map((todo, i) =>
+            i === index ? { ...todo, completed: !todo.completed } : todo
+        );
+        setTodos(updatedTodos);
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 flex items-center justify-center">
             <div className="w-full max-w-4xl p-8 bg-white rounded-2xl shadow-xl">
@@ -83,7 +92,8 @@ const TodoList = () => {
                                             <div className="flex items-center">
                                                 <input
                                                     type="checkbox"
-
+                                                    checked={todo.completed}
+                                                    onChange={() => toggleComplete(index)}
                                                     className="mr-3 w-6 h-6 text-purple-500 rounded focus:ring-purple-600"
                                                 />
                                                 <span className="text-lg text-gray-800">{todo.text}</span>
@@ -115,8 +125,35 @@ const TodoList = () => {
                         <h2 className="text-xl font-semibold text-gray-700 mb-4">Completed Tasks</h2>
                         <ul className="list-none space-y-4">
 
-                            <p className="text-center text-gray-600">No completed tasks!</p>
-
+                            {todos.filter((todo) => todo.completed).length > 0 ? (
+                                todos
+                                    .filter((todo) => todo.completed)
+                                    .map((todo, index) => (
+                                        <li
+                                            key={index}
+                                            className="flex justify-between items-center p-4 rounded-xl shadow-lg bg-green-50 border-l-4 border-green-400"
+                                        >
+                                            <div className="flex items-center">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={todo.completed}
+                                                    onChange={() => toggleComplete(index)}
+                                                    className="mr-3 w-6 h-6 text-green-400 rounded focus:ring-green-400"
+                                                />
+                                                <span className="text-lg line-through text-gray-500">
+                                                    {todo.text}
+                                                </span>
+                                            </div>
+                                            <button
+                                                className="text-red-400 hover:text-red-600 transition duration-300 text-3xl"
+                                            >
+                                                <RiDeleteBin5Line />
+                                            </button>
+                                        </li>
+                                    ))
+                            ) : (
+                                <p className="text-center text-gray-600">No completed tasks!</p>
+                            )}
                         </ul>
                     </div>
                 </div>
