@@ -1,4 +1,4 @@
-import List from "./component/List"
+import List from "./component/List";
 
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
   return (
     <div>
       <List></List>
+
     </div>
   )
 }
