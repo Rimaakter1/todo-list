@@ -14,7 +14,6 @@ const TodoList = () => {
         if (!input.trim()) return; // Return early if input is empty
 
         const newTodo = { text: input, completed: false };
-
         if (editTask !== null) {
             const updatedTodos = [...todos];
             updatedTodos[editTask] = { ...todos[editTask], text: input };
@@ -32,6 +31,14 @@ const TodoList = () => {
     const editTodo = (index) => {
         setInput(todos[index].text);
         setEditTask(index);
+    };
+
+
+    // Remove a task
+    const removeTodo = (index) => {
+        const updatedTodos = [...todos];
+        updatedTodos.splice(index, 1);
+        setTodos(updatedTodos);
     };
 
     return (
@@ -89,7 +96,7 @@ const TodoList = () => {
                                                     <FiEdit />
                                                 </button>
                                                 <button
-
+                                                    onClick={() => removeTodo(index)}
                                                     className="text-red-500 hover:text-red-600 transition duration-300 text-3xl"
                                                 >
                                                     <RiDeleteBin5Line />
