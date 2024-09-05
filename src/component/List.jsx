@@ -27,6 +27,13 @@ const TodoList = () => {
         setInput("");
     };
 
+
+    // Edit a task
+    const editTodo = (index) => {
+        setInput(todos[index].text);
+        setEditTask(index);
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 flex items-center justify-center">
             <div className="w-full max-w-4xl p-8 bg-white rounded-2xl shadow-xl">
@@ -76,7 +83,7 @@ const TodoList = () => {
                                             </div>
                                             <div className="flex items-center space-x-4">
                                                 <button
-
+                                                    onClick={() => editTodo(index)}
                                                     className="text-purple-500 hover:text-purple-600 transition duration-300 text-3xl"
                                                 >
                                                     <FiEdit />
