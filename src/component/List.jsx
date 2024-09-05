@@ -26,10 +26,31 @@ const TodoList = () => {
                     </button>
                 </div>
 
+                <div className="flex space-x-8">
+                    {/* Incomplete Tasks Section */}
+                    <div className="w-1/2 p-4 bg-gray-100 rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold text-gray-700 mb-4">Tasks To Do</h2>
+                        <ul className="list-none space-y-4">
 
+                            <p className="text-center text-gray-600">No tasks to do!</p>
+                        </ul>
+                    </div>
+
+                    {/* Completed Tasks Section */}
+                    <div className="w-1/2 p-4 bg-green-100 rounded-lg shadow-md">
+                        <h2 className="text-xl font-semibold text-gray-700 mb-4">Completed Tasks</h2>
+                        <ul className="list-none space-y-4">
+
+                            <p className="text-center text-gray-600">No completed tasks!</p>
+
+                        </ul>
+                    </div>
+                </div>
             </div>
+
         </div>
     );
 };
 
 export default TodoList;
+
